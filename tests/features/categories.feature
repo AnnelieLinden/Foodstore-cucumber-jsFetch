@@ -17,7 +17,7 @@ Feature: Categories
     And the response time should be below 1000 milliseconds
     And there should be at least 1 product in the category
 
-    # Use dynamic data (from a previous scenario) to run a scenario outline multiple times!
+    # Use dynamic data (from a previous scenario in the same file) to run a scenario outline multiple times!
     # See the step definitions:
     # 1) Set an array of string values in your step definitions for
     #    the previous scenario! (In our case: this.categoryUrlParts)
