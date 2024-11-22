@@ -7,7 +7,7 @@ Given('that I am on the domain {string}', async function (urlPrefix) {
 
 When('I visit the endpoint {string} {string}', async function (method, url) {
   await this.fetch(url, { method });
-  // console.log('response:', this.response, '\nresponseTime:', this.responseTime, '\njson:', this.json);
+  //console.log('response:', this.response, '\nresponseTime:', this.responseTime, '\njson:', this.json);
 });
 
 Then('the status code of the response should be {float}', async function (statusCode) {
