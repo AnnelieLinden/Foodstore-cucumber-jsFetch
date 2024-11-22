@@ -1,6 +1,5 @@
 Feature: Pagination
 
-
   Background:
     Given that I am on the domain "http://localhost:4000"
 
@@ -16,32 +15,13 @@ Examples:
     |   10   |
     |    5   |
  
- 
+   Scenario: Get a list of all categories
+    When I visit the endpoint "GET" "/api/leftMenu/categorytree"
+    Then there should be at least 10 main categories
+
   Scenario Outline: The site should show the right amount of products
-    When I visit the endpoint "GET" "/api/c/<urlPart>?size=30&page=0&sort=topRated"
+    When I visit the endpoint "GET" "/api/c/{categoryUrlPart}?size=30&page=0&sort=topRated"
     Then There should be at most 30 products visible
 
-Examples:
-    |   urlPart             | 
-    |   vegetariskt         |
-    |   dryck               |
-    |   barn                |
-    |   apotek              |
-    |   kiosk               |
-    |   fryst               |
-    |   skafferi            |
-    |   djur                |
-    |   fardigmat           |
-    |   tobak               |
-    |   lotter              |
-    |mejeri-ost-och-agg     |
-    |fisk-och-skaldjur      |
-    |brod-och-kakor         |
-    |hem-och-stad           |
-    |blommor-och-tradgard   |
-    |frukt-och-gront        |
-    |kott-chark-och-fagel   |
-    |glass-godis-och-snacks |
-    |halsa-och-skonhet      |
-
-    
+   Examples:
+    | {dynamic: 'categoryUrlParts'} |
