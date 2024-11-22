@@ -11,7 +11,6 @@ Feature: Sort by Price
   Examples:
     | {dynamic: 'categoryUrlParts'} |
 
-
     Scenario Outline: Sort By price Expensive-Cheap
     When I visit the endpoint "GET" "/api/c/{categoryUrlPart}?size=30&page=0&sort=price-desc"
     Then The products should be in descending order according to price
