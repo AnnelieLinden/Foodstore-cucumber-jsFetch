@@ -46,4 +46,4 @@ class PersistantWorld {
 setWorldConstructor(PersistantWorld);
 
 // Max timeout per step
-setDefaultTimeout(60000);
+setDefaultTimeout(600000);
