@@ -8,8 +8,6 @@ Feature: Sorting
 
     Scenario Outline: Sort By price Cheap-Expensive
     Then The products should be in ascending order according to price in "{categoryUrlPart}"
-  
-  
 
   Examples:
     | {dynamic: 'categoryUrlParts'} |
