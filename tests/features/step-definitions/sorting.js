@@ -129,20 +129,18 @@ Then("The products should be in descending order according to compareprice in {s
 
 Then("The products should be in descending order according to name in {string}",  async function (categoryUrlPart) {
   const json = await getData(`http://localhost:4000/api/c/${categoryUrlPart}?size=30&page=0&sort=name-desc`)
-        let original = json.results.map(item => item.name.toLowerCase());
-        let ourSort = [...original].toSorted((a, b) => a - b).reverse()
-        let isOrdered = JSON.stringify(ourSort) === JSON.stringify(original);
-        let difference = []
-       
-        for(let j=0; j<original.length; j++){
-          if (ourSort[j] !== original[j]) {
-            difference.push(j, " orginalet: " + original[j], " vår sortering: "+ ourSort[j]);
-          }
-        }
-        if(!isOrdered){
-          console.log("endpoint: ", categoryUrlPart)
-          console.log(difference)
-        }
-        expect(isOrdered).to.be.true;
-
+  let original = json.results.map(item => item.name.toLowerCase());
+  let ourSort = [...original].sort((a, b) => a - b);
+  let isOrdered = JSON.stringify(ourSort) === JSON.stringify(original);
+  let difference = []
+  for(let j=0; j<original.length; j++){
+    if (ourSort[j] !== original[j]) {
+      difference.push(j, " orginalet: " + original[j], " vår sortering: "+ ourSort[j]);
+    }
+  }
+  if(!isOrdered){
+    console.log("endpoint: ", categoryUrlPart)
+    console.log(difference)
+  }
+  expect(isOrdered).to.be.true;
 }); 
